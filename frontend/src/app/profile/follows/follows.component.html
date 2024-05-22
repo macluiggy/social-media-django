@@ -1,0 +1,18 @@
+<!-- <p>follows works!</p> -->
+<!-- <p-dialog 
+  header="Followerssss" 
+  [modal]="true" 
+  [responsive]="true" 
+  [style]="{ width: '50vw' }"
+>
+
+</p-dialog> -->
+
+<p-tabView>
+  <p-tabPanel header="Following">
+    <app-following [userId]="userId" (closeDialog)="onCloseDialog()"></app-following>
+  </p-tabPanel>
+  <p-tabPanel header="Followers">
+    <app-followers [userId]="userId" (closeDialog)="onCloseDialog()"></app-followers>
+  </p-tabPanel>
+</p-tabView>

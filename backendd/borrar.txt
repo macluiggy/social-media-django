@@ -1,0 +1,3 @@
+falta pero si quieres nomas
+- agregar tabla de lenguajes
+- actualizar en el frontend para guardar en localstorage el lenguaje y cada vez que se cambie el lenguaje se actualice en el localstorage

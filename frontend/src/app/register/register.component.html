@@ -1,0 +1,97 @@
+<p-card header="Register">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="p-field">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        class="p-inputtext"
+      />
+      <div
+        *ngIf="
+          registerForm.get('firstName')?.invalid &&
+          registerForm.get('firstName')?.touched
+        "
+        class="error"
+      >
+        First name is required.
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="lastName">Last Name</label>
+      <input class="p-inputtext" id="lastName" formControlName="lastName" />
+    </div>
+
+    <div class="p-field">
+      <label for="username">Username</label>
+      <input class="p-inputtext" id="username" formControlName="username" />
+      <div
+        *ngIf="
+          registerForm.get('username')?.invalid &&
+          registerForm.get('username')?.touched
+        "
+      >
+        Username is required.
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="email">Email</label>
+      <input class="p-inputtext" id="email" formControlName="email" />
+      <div
+        *ngIf="
+          registerForm.get('email')?.invalid &&
+          registerForm.get('email')?.touched
+        "
+        class="error"
+      >
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="p-inputtext"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+
+    <div class="p-field">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        class="p-inputtext"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+      />
+      <div
+        *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched"
+        class="error"
+      >
+        Passwords do not match.
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="profilePicture">Profile Picture</label>
+      <p-fileUpload
+        name="profileImage"
+        chooseIcon="pi pi-upload"
+        accept="image/*"
+        maxFileSize="1000000"
+        chooseLabel="Browse"
+        class="p-fileupload-content"
+        [style]="{ marginBottom: '10px' }"
+        #profileImage
+        (onSelect)="onSelect($event)"
+      ></p-fileUpload>
+    </div>
+
+    <p-button type="submit" label="Save Changes"></p-button>
+  </form>
+</p-card>

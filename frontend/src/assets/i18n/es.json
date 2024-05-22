@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "angular-template": "Plantilla Angular"
+  },
+  "title": "Título",
+  "enterTitle": "Introduzca el título",
+  "optional": "Opcional",
+  "content": "Contenido",
+  "enterContent": "Introduzca el contenido",
+  "submit": "Enviar",
+  "form": {
+    "error": {
+      "required": "This field is required",
+      "minlength": "This field must be at least 3 characters long",
+      "maxlength": "This field cannot be more than 10 characters long"
+    }
+  }
+}

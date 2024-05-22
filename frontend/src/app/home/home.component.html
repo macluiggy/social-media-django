@@ -1,0 +1,9 @@
+<app-posts
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="5"
+  (scrolled)="onScroll()"
+  [posts]="randomPosts"
+  [loading]="loading"
+></app-posts
+>

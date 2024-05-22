@@ -1,0 +1,26 @@
+<style></style>
+
+<main class="main">
+  <div id="app">
+    <app-nav-bar></app-nav-bar>
+    <div class="container">
+      <div class="section-left">
+        <!-- @switch (currentRoute) { @case ('user') {
+        <h1>left content for /user route</h1>
+        } @default {
+        <h1>default left content</h1>
+        } } -->
+      </div>
+      <div class="section-center">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="section-right">
+        <!-- @if (currentRoute=== 'home') {
+        <h1>right content for /home route</h1>
+        } @if (currentRoute=== 'user') {
+        <h1>right content for /other route</h1>
+        } -->
+      </div>
+    </div>
+  </div>
+</main>

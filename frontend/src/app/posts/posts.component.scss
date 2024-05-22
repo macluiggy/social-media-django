@@ -1,0 +1,41 @@
+@import "../../variables.scss";
+
+/* styles.css */
+
+.postsCard:hover {
+  /* Add your hover styles here. For example: */
+  background-color: var(--bootstrap4-light-purple);
+  cursor: pointer; /* Change the cursor to a hand pointer */
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust as needed */
+}
+
+.postsCard {
+  padding: 1rem;
+  margin: 1rem;
+  background-color: var(--highlight-bg);
+}
+
+.post-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // background-color: red;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.pi-ellipsis-v {
+  background-color: transparent;
+  border: none;
+  color: var(--bootstrap4-light-purple);
+}

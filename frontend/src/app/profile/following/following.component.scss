@@ -1,0 +1,11 @@
+.user-image {
+  width: 10%;
+  height: auto;
+}
+
+// horizontally the following container
+.following-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

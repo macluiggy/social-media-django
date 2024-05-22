@@ -1,0 +1,5 @@
+@if (loggedInUser.id != userId) { @if (!isFollowing) {
+<p-button (click)="followUser()">Follow</p-button>
+} @else {
+<p-button (click)="unfollowUser()">Unfollow</p-button>
+} }

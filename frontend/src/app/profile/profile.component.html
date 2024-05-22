@@ -1,0 +1,61 @@
+@if (currentUser) {
+<p-card [header]="currentUser.username">
+  <p-header>
+    <img
+      [src]="currentUser.profileImageUrl"
+      alt="Profile Photo"
+      class="profile-photo"
+    />
+    <div class="follow-info">
+      <app-follow-button [userId]="userId"></app-follow-button>
+      <div class="follow-counts">
+        <p>
+          <a (click)="showFollowsDialog()">
+            <strong> {{ followersCount }} Followers </strong>
+          </a>
+        </p>
+        <p>
+          <a (click)="showFollowsDialog()">
+            <strong> {{ followingCount }} Following </strong>
+          </a>
+        </p>
+      </div>
+    </div>
+  </p-header>
+  <div class="container">
+    <p><strong>Name:</strong> {{ currentUser.firstName }}</p>
+  </div>
+</p-card>
+
+} @if(currentUser) {
+
+<p-tabView>
+  <p-tabPanel header="My Posts">
+    <app-posts
+      [posts]="userPosts"
+      [loading]="loading"
+      infiniteScroll
+      [infiniteScrollDistance]="1"
+      [infiniteScrollThrottle]="5"
+      (scrolled)="onScroll()"
+      [loading]="loading"
+    ></app-posts>
+  </p-tabPanel>
+  <!-- <p-tabPanel header="Shared Posts"> -->
+  <!-- <p-card *ngFor="let post of currentUser.sharedPosts">
+      <p-header>{{ post.title }}</p-header>
+      <p>{{ post.content }}</p>
+    </p-card> -->
+  <!-- </p-tabPanel> -->
+</p-tabView>
+}
+
+<p-dialog
+  [(visible)]="displayFollowsDialog"
+  [modal]="true"
+  [baseZIndex]="10000"
+  [dismissableMask]="true"
+  styleClass="follow-dialog"
+>
+  <app-follows [userId]="userId" (closeDialog)="closeDialog()"></app-follows>
+</p-dialog>

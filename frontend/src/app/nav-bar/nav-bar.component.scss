@@ -1,0 +1,50 @@
+$button-signin-color: #e67b7b;
+$button-signup-color: #d85353;
+
+.navbar-component {
+  margin-bottom: 3rem;
+}
+
+.navbar-singin {
+  background-color: $button-signin-color;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 3px;
+}
+.navbar-singin:hover {
+  background-color: lighten($button-signin-color, 10%);
+}
+
+.navbar-signup {
+  background-color: $button-signup-color;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 3px;
+}
+.navbar-signup:hover {
+  background-color: lighten($button-signup-color, 10%);
+}
+
+.sidebar-button {
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 3px;
+  font-size: large;
+}
+
+.navbar-create-post {
+  background-color: transparent;
+  color: var(--text-color);
+  margin-right: 10px;
+}
+
+.navbar-avatar {
+  cursor: pointer;
+}

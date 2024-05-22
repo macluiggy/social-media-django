@@ -1,0 +1,24 @@
+<p-table [value]="users">
+  <ng-template pTemplate="body" let-user>
+    <tr>
+      <td>
+        <a [routerLink]="['/profile/user', user.id]" (click)="handleUserClick()">
+          <img
+            [src]="user.profileImageUrl || defaultProfileImage"
+            alt="Profile Photo"
+            class="profile-photo"
+            style="width: 50px; height: 50px; border-radius: 50%"
+          />
+        </a>
+      </td>
+      <td>
+        <a [routerLink]="['/profile/user', user.id]" (click)="handleUserClick()">{{ user.firstName }}</a>
+        <br />
+        <a [routerLink]="['/profile/user', user.id]" (click)="handleUserClick()">{{ user.username }}</a>
+      </td>
+      <td>
+        <app-follow-button [userId]="user.id"></app-follow-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

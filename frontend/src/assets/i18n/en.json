@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "angular-template": "Angular Template"
+  },
+  "title": "Title",
+  "enterTitle": "Enter title",
+  "optional": "Optional",
+  "content": "Content",
+  "enterContent": "Enter content",
+  "submit": "Submit",
+  "form": {
+    "error": {
+      "required": "This field is required",
+      "minlength": "This field must be at least 3 characters long",
+      "maxlength": "This field cannot be more than 10 characters long"
+    }
+  }
+}

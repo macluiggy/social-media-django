@@ -1,0 +1,23 @@
+FROM node:18-alpine3.16
+# FROM oven/bun
+
+# Create app directory
+WORKDIR /app
+
+# Bundle app source
+COPY . .
+
+# Install app dependencies
+COPY package.json ./
+
+# RUN bun install -g @nestjs/cli
+# RUN bun install
+RUN npm install -g @nestjs/cli
+RUN npm install
+
+# Expose port 3000 
+EXPOSE 3000
+
+# Run the app
+CMD ["npm", "run", "start:dev"]
+# CMD ["bun", "run", "start:dev"]

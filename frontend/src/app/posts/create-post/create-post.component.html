@@ -1,0 +1,46 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">{{ "title" | translate }}</label>
+    <input
+      type="text"
+      pInputText
+      placeholder="{{ 'enterTitle' | translate }}"
+      formControlName="title"
+      class="p-inputtext"
+    />
+    <small id="emailHelp" class="form-text text-muted">{{
+      "optional" | translate
+    }}</small>
+  </div>
+  <div
+    class="form-group"
+    style="display: flex; width: 100%; flex-direction: column"
+  >
+    <label for="content">{{ "content" | translate }}</label>
+    <textarea
+      class="p-inputtextarea"
+      id="content"
+      formControlName="content"
+      placeholder="{{ 'enterContent' | translate }}"
+      rows="3"
+      (focus)="submitting = false"
+    >
+    </textarea>
+    @if (postForm.get('content')?.invalid && submitting) {
+    <div class="error">
+      {{ "form.error.required" | translate }}
+      <!-- {{ postForm.get('content')?.errors | json }} -->
+    </div>
+    }
+  </div>
+  <p-button [label]="'submit' | translate" type="submit">
+    @if (loading && postForm.valid) {
+    <p-progressSpinner
+      styleClass="w-1rem h-1rem"
+      strokeWidth="8"
+      animationDuration=".5s"
+    >
+    </p-progressSpinner>
+    }
+  </p-button>
+</form>
