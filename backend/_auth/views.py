@@ -9,6 +9,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
+from rest_framework.response import Response
 # Create your views here.
 
 class AuthView(viewsets.ViewSet):
@@ -19,11 +20,12 @@ class AuthView(viewsets.ViewSet):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponse("Logged in")
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            })
         else:
-            # return HttpResponse("Invalid credentials")
-            # thorw an error
-            # return HttpResponse("Invalid credentials", status=401)
             raise ValidationError("Invalid credentials")
 
     @action(detail=False, methods=['post'], url_path='signup')
