@@ -5,8 +5,8 @@ meta {
 }
 
 post {
-  url: {{base_url}}/users
-  body: multipartForm
+  url: {{base_url}}/users/
+  body: json
   auth: bearer
 }
 
@@ -16,14 +16,13 @@ auth:bearer {
 
 body:json {
   {
-    "username": "jonhdoe",
-    "fullName": "John Doe",
-    "email": "example@example.com",
-    "password": "password",
+    "username": "macluiggy",
+    "firstName": "John Doe",
+    "email": "ferrinluiggy@gmail.com",
+    "password": "123456",
     "phone": "1234567890"
   }
 }
-
 
 docs {
   # Create User

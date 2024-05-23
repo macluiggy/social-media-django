@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{base_url}}/users
+  url: {{base_url}}/users/hello-world/hello/?world=earth&tik=tok
   body: none
   auth: bearer
+}
+
+query {
+  world: earth
+  tik: tok
 }
 
 auth:bearer {
