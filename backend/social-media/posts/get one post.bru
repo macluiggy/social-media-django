@@ -1,0 +1,19 @@
+meta {
+  name: get one post
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/posts/eb99af0d-eb86-4d59-86b7-8fe52a897b41
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+vars:pre-request {
+  xxx: xxx
+}
