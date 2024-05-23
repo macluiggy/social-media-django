@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import viewsets, status
@@ -28,6 +29,14 @@ class UsersViewSet(viewsets.ModelViewSet):
     #         return Response(serializer.data, status=status.HTTP_201_CREATED)
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    def create(self, request, *args, **kwargs):
+        ## check if the user already exists by email or username
+        email = request.data.get('email')
+        username = request.data.get('username')
+        if Users.objects.filter(email=email).exists():
+            return Response({'message': 'User with this email already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        return super().create(request, *args, **kwargs)
+    
     @action(detail=False, methods=['get'], url_path='hello-world/(?P<name>[^/.]+)')
     # @action(detail=False, methods=['get'], url_path='hello-world/:name')
     def hello_world(self, request, pk=None, name=None):
@@ -44,4 +53,13 @@ class UsersViewSet(viewsets.ModelViewSet):
         # return Response(serializer.data, status=status.HTTP_200_OK)
         #  return dummy data
         return Response({'message': 'Hello, World!', name: name, world: world }, status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['get'], url_path='get-users-emails')
+    def get_users_emails(self, request):
+        queryset = Users.objects.all()
+        # print like in javascript JSON.stringify(queryset)
+        # print('queryset:', json.dumps(queryset))
+        serializer = UsersSerializer(queryset, many=True)
+        emails = [user['email'] for user in serializer.data]
+        return Response(emails, status=status.HTTP_200_OK)
     
