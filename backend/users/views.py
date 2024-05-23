@@ -11,7 +11,7 @@ from rest_framework.decorators import api_view
 
 # Create your views here.
 
-def hello_world(request):
+def helloWorld(request):
     return HttpResponse("Hello, World!")
 
 class UsersViewSet(viewsets.ModelViewSet):
@@ -28,11 +28,20 @@ class UsersViewSet(viewsets.ModelViewSet):
     #         return Response(serializer.data, status=status.HTTP_201_CREATED)
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    @action(detail=False, methods=['get'])
-    def hello_world(self, request):
+    @action(detail=False, methods=['get'], url_path='hello-world/(?P<name>[^/.]+)')
+    # @action(detail=False, methods=['get'], url_path='hello-world/:name')
+    def hello_world(self, request, pk=None, name=None):
         # return Response({'message': 'Hello, World!'}, status=status.HTTP_200_OK)
         #  show all the users
         queryset = Users.objects.all()
         serializer = UsersSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        print('name:', self.kwargs)
+        name = self.kwargs.get('name')
+        query_params = request.query_params
+        print('query_params:', query_params)
+        world = query_params.get('world')
+        
+        # return Response(serializer.data, status=status.HTTP_200_OK)
+        #  return dummy data
+        return Response({'message': 'Hello, World!', name: name, world: world }, status=status.HTTP_200_OK)
     
