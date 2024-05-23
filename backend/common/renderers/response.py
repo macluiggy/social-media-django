@@ -7,6 +7,7 @@ class CustomJSONRenderer(JSONRenderer):
             'status': 'success' if status_code < 400 else 'error',
             'code': status_code,
             'data': data,
-            'message': data.get('message', None)
         }
+        if isinstance(data, dict):
+            response['message'] = data.get('message', None)
         return super().render(response, accepted_media_type, renderer_context)
