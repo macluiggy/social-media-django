@@ -31,10 +31,10 @@ class UsersViewSet(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         ## check if the user already exists by email or username
-        email = request.data.get('email')
-        username = request.data.get('username')
-        if Users.objects.filter(email=email).exists():
-            return Response({'message': 'User with this email already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        # email = request.data.get('email')
+        # username = request.data.get('username')
+        # if Users.objects.filter(email=email).exists():
+        #     return Response({'message': 'User with this email already exists'}, status=status.HTTP_400_BAD_REQUEST)
         return super().create(request, *args, **kwargs)
     
     @action(detail=False, methods=['get'], url_path='hello-world/(?P<name>[^/.]+)')
