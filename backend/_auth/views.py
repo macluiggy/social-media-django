@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 # Create your views here.
 
 class AuthView(viewsets.ViewSet):
-    @action(detail=False, methods=['get'], url_path='signin')
+    @action(detail=False, methods=['post'], url_path='signin')
     def login(self, request):
         return HttpResponse("Login page")
 
