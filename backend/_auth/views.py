@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.decorators import action
+from rest_framework.exceptions import ValidationError
 # Create your views here.
 
 class AuthView(viewsets.ViewSet):
@@ -22,7 +23,8 @@ class AuthView(viewsets.ViewSet):
         else:
             # return HttpResponse("Invalid credentials")
             # thorw an error
-            return HttpResponse("Invalid credentials", status=401)
+            # return HttpResponse("Invalid credentials", status=401)
+            raise ValidationError("Invalid credentials")
 
     @action(detail=False, methods=['post'], url_path='signup')
     def register(self, request):
