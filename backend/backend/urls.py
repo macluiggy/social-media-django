@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+base_api_url = 'api/v1/'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
-    path('api/v1/', include('users.urls')),
+    path(f'api/v1/', include('users.urls')),
+    # path(f'{base_api_url}', include('users.urls')),
+    # path('api/v1/', include('auth.urls')),
+    # path(f'{base_api_url}', include('auth.urls')),
 ]
