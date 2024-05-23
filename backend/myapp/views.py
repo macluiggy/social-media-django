@@ -6,8 +6,8 @@ from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
-    # return HttpResponse("Hello, World!")
-    return render(request, "home.html")
+    return HttpResponse("Hello, World!")
+    # return render(request, "home.html")
 
 
 def todos(request):
