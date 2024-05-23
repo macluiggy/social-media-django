@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from .models import Users
-from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from rest_framework_simplejwt.tokens import RefreshToken
 
 class UsersSerializer(serializers.ModelSerializer):
